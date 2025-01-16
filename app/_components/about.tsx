@@ -1,6 +1,11 @@
+'use client'
+
 import Image from 'next/image'
+import { useLanguage } from '../i18n/LanguageContext'
 
 const AboutSection = () => {
+  const { t } = useLanguage()
+  
   return (
     <section id="about" className="relative py-20 bg-gradient-to-b from-amber-50 to-white">
       {/* Pattern Background */}
@@ -11,10 +16,10 @@ const AboutSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-amber-700 text-lg font-medium tracking-[0.2em] uppercase mb-4">
-            Our Story
+            {t('aboutTitle')}
           </h2>
           <h3 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-            Traditional Craftsmanship
+            {t('aboutTitle')}
           </h3>
           <div className="w-24 h-1 bg-gradient-to-r from-amber-600 to-amber-700 mx-auto"></div>
         </div>
@@ -22,13 +27,7 @@ const AboutSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6 text-gray-600">
             <p className="text-lg leading-relaxed">
-              At Mr. Basit's Moroccan Treasures, we bring you the finest handcrafted pieces 
-              directly from the ancient medinas of Morocco. Each item in our collection tells 
-              a story of tradition, craftsmanship, and cultural heritage.
-            </p>
-            <p className="text-lg leading-relaxed">
-              Our artisans use techniques passed down through generations, ensuring that 
-              every piece not only looks beautiful but carries the soul of Moroccan artistry.
+              {t('aboutDescription')}
             </p>
             <div className="grid grid-cols-2 gap-6 pt-4">
               <div className="text-center p-4 border border-amber-200 rounded-xl bg-white shadow-sm">

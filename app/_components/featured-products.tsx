@@ -1,6 +1,8 @@
 'use client'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useLanguage } from '../i18n/LanguageContext'
+import { useState } from 'react'
 
 interface Product {
   id: number
@@ -56,6 +58,43 @@ const products: Product[] = [
 ]
 
 const FeaturedProducts = () => {
+  const { t } = useLanguage()
+  const [addedItems, setAddedItems] = useState<{ [key: number]: boolean }>({})
+
+  const addToCart = (product: Product) => {
+    // Get existing cart
+    const existingCart = localStorage.getItem('cart')
+    let cart = existingCart ? JSON.parse(existingCart) : []
+
+    // Check if product already exists in cart
+    const existingItem = cart.find((item: any) => item.id === product.id)
+
+    if (existingItem) {
+      // If exists, increment quantity
+      cart = cart.map((item: any) => 
+        item.id === product.id 
+          ? { ...item, quantity: item.quantity + 1 }
+          : item
+      )
+    } else {
+      // If not exists, add new item with quantity 1
+      cart.push({ ...product, quantity: 1 })
+    }
+
+    // Save back to localStorage
+    localStorage.setItem('cart', JSON.stringify(cart))
+
+    // Show visual feedback
+    setAddedItems(prev => ({ ...prev, [product.id]: true }))
+    setTimeout(() => {
+      setAddedItems(prev => ({ ...prev, [product.id]: false }))
+    }, 1500)
+
+    // Trigger events for cart component to update
+    window.dispatchEvent(new Event('storage'))
+    window.dispatchEvent(new Event('cartUpdated'))
+  }
+  
   return (
     <section id="products" className="relative py-20 bg-gradient-to-b from-white to-amber-50">
       {/* Moroccan Pattern Background */}
@@ -67,10 +106,10 @@ const FeaturedProducts = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-amber-700 text-lg font-medium tracking-[0.2em] uppercase mb-4">
-            Our Collection
+            {t('shop')}
           </h2>
           <h3 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-            Featured Products
+            {t('featuredProducts')}
           </h3>
           <div className="w-24 h-1 bg-gradient-to-r from-amber-600 to-amber-700 mx-auto"></div>
         </div>
@@ -108,12 +147,24 @@ const FeaturedProducts = () => {
                       {product.price.toLocaleString()} <span className="text-sm">MAD</span>
                     </p>
                     <button 
-                      className="px-6 py-2 bg-gradient-to-r from-amber-600 to-amber-700 text-white 
-                        rounded-full font-medium text-sm hover:from-amber-500 hover:to-amber-600 
-                        transition-all duration-300"
-                      onClick={() => console.log(`Add ${product.name} to cart`)}
+                      className={`px-6 py-2 bg-gradient-to-r text-white rounded-full font-medium text-sm
+                        transition-all duration-300 relative
+                        ${addedItems[product.id]
+                          ? 'from-green-600 to-green-700 hover:from-green-500 hover:to-green-600'
+                          : 'from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-600'
+                        }`}
+                      onClick={() => addToCart(product)}
                     >
-                      Add to Cart
+                      <span className={`inline-flex items-center gap-2 transition-transform duration-300 ${
+                        addedItems[product.id] ? 'scale-0' : 'scale-100'
+                      }`}>
+                        {t('addToCart')}
+                      </span>
+                      <span className={`absolute inset-0 flex items-center justify-center transition-transform duration-300 ${
+                        addedItems[product.id] ? 'scale-100' : 'scale-0'
+                      }`}>
+                        ✓
+                      </span>
                     </button>
                   </div>
                 </div>
@@ -129,7 +180,7 @@ const FeaturedProducts = () => {
             className="inline-flex items-center gap-2 px-8 py-3 border border-amber-600 
               text-amber-700 rounded-full hover:bg-amber-50 transition-colors duration-300"
           >
-            View All Products
+            {t('viewDetails')}
             <svg 
               className="w-4 h-4" 
               fill="none" 

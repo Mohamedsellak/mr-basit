@@ -4,8 +4,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import FloatingImages from './floating-images'
 import Bubbles from './bubbles'
+import { useLanguage } from '../i18n/LanguageContext'
 
 const Hero = () => {
+  const { t } = useLanguage()
+  
   return (
     <section id="home" className="relative overflow-hidden bg-gradient-to-b from-amber-50 to-white min-h-[85vh] flex items-center">
       {/* Animated Background Elements */}
@@ -27,21 +30,20 @@ const Hero = () => {
                 inline-block py-1.5 px-3 bg-amber-50/80 rounded-[1rem] rounded-br-[0.2rem] rounded-tl-[0.2rem]
                 animate-scale-pulse"
               >
-                Welcome to
+                {t('heroTitle')}
               </span>
               <div className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
                 <span className="text-gray-800 inline-block animate-slide-in-right [animation-delay:200ms]">Mr. Basit's</span> 
                 <span className="block mt-2 bg-gradient-to-r from-amber-600 via-amber-700 to-amber-800 
                   text-transparent bg-clip-text animate-gradient animate-slide-in-right [animation-delay:400ms]">
-                  Moroccan Treasures
+                  {t('heroTitle')}
                 </span>
               </div>
             </div>
             
             <p className="text-base lg:text-lg text-gray-600 leading-relaxed max-w-xl
               animate-slide-in-right [animation-delay:600ms]">
-              Discover authentic Moroccan craftsmanship and tradition. From handwoven 
-              carpets to artisanal ceramics, explore our curated collection.
+              {t('heroSubtitle')}
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 animate-slide-in-right [animation-delay:800ms]">
@@ -55,7 +57,7 @@ const Hero = () => {
                   shadow-lg shadow-amber-600/10 hover:shadow-amber-500/20 transform hover:-translate-y-0.5
                   hover:scale-105"
               >
-                <span>Explore Collection</span>
+                <span>{t('shopNow')}</span>
                 <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
@@ -67,7 +69,7 @@ const Hero = () => {
                   hover:scale-105 rounded-[1rem] rounded-tr-[0.5rem] rounded-bl-[2rem]
                   border border-amber-200 hover:border-amber-300 hover:bg-amber-50/50"
               >
-                Learn More
+                {t('about')}
                 <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" />
                 </svg>

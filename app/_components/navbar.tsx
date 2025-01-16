@@ -1,35 +1,11 @@
 'use client'
-import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-
-interface CartItem {
-  id: number
-  quantity: number
-}
+import { useLanguage } from '../i18n/LanguageContext'
 
 const Navbar = () => {
-  const [cartItems, setCartItems] = useState<CartItem[]>([])
   const pathname = usePathname()
-
-  // Cart state management
-  useEffect(() => {
-    const storedCart = localStorage.getItem('cart')
-    if (storedCart) {
-      setCartItems(JSON.parse(storedCart))
-    }
-
-    // Listen for cart updates
-    const handleStorageChange = (e: StorageEvent) => {
-      if (e.key === 'cart' && e.newValue) {
-        setCartItems(JSON.parse(e.newValue))
-      }
-    }
-    window.addEventListener('storage', handleStorageChange)
-    return () => window.removeEventListener('storage', handleStorageChange)
-  }, [])
-
-  const cartItemsCount = cartItems.reduce((sum, item) => sum + item.quantity, 0)
+  const { t } = useLanguage()
 
   return (
     <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 w-full max-w-sm mx-auto px-4">
@@ -51,7 +27,7 @@ const Navbar = () => {
                 <div className="absolute -inset-2 bg-amber-500/10 rounded-full opacity-0 group-hover:opacity-100 
                   transition-opacity duration-200 group-hover:animate-ping-slow"></div>
               </div>
-              <span className="text-xs font-medium tracking-wide">Home</span>
+              <span className="text-xs font-medium tracking-wide">{t('home')}</span>
             </Link>
 
             {/* Products */}
@@ -69,7 +45,7 @@ const Navbar = () => {
                 <div className="absolute -inset-2 bg-amber-500/10 rounded-full opacity-0 group-hover:opacity-100 
                   transition-opacity duration-200 group-hover:animate-ping-slow"></div>
               </div>
-              <span className="text-xs font-medium tracking-wide">Shop</span>
+              <span className="text-xs font-medium tracking-wide">{t('shop')}</span>
             </Link>
 
             {/* Cart */}
@@ -88,13 +64,6 @@ const Navbar = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
                     d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
-                {cartItemsCount > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-6 h-6 rounded-full 
-                    flex items-center justify-center shadow-lg shadow-red-500/30 border border-red-400/50
-                    animate-in slide-in-from-top-2 duration-200 font-semibold">
-                    {cartItemsCount}
-                  </span>
-                )}
               </Link>
             </div>
 
@@ -113,7 +82,7 @@ const Navbar = () => {
                 <div className="absolute -inset-2 bg-amber-500/10 rounded-full opacity-0 group-hover:opacity-100 
                   transition-opacity duration-200 group-hover:animate-ping-slow"></div>
               </div>
-              <span className="text-xs font-medium tracking-wide">About</span>
+              <span className="text-xs font-medium tracking-wide">{t('about')}</span>
             </Link>
 
             {/* Contact */}
@@ -131,7 +100,7 @@ const Navbar = () => {
                 <div className="absolute -inset-2 bg-amber-500/10 rounded-full opacity-0 group-hover:opacity-100 
                   transition-opacity duration-200 group-hover:animate-ping-slow"></div>
               </div>
-              <span className="text-xs font-medium tracking-wide">Contact</span>
+              <span className="text-xs font-medium tracking-wide">{t('contact')}</span>
             </Link>
           </div>
         </div>
