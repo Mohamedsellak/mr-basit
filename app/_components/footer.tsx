@@ -3,25 +3,35 @@
 import Link from 'next/link'
 import { useLanguage } from '../i18n/LanguageContext'
 
+interface FooterLink {
+  label: string
+  href: string
+}
+
+interface FooterSection {
+  title: string
+  links: FooterLink[]
+}
+
 export default function Footer() {
   const { t } = useLanguage()
 
-  const footerSections = [
+  const footerSections: FooterSection[] = [
     {
-      title: t('aboutStore'),
+      title: String(t('aboutStore')),
       links: [
-        { label: t('aboutStore'), href: '/#about' },
-        { label: t('paymentMethods'), href: '/cod' },
-        { label: t('shippingDelivery'), href: '/shipping' },
-        { label: t('faq'), href: '/faq' },
+        { label: String(t('aboutStore')), href: '/#about' },
+        { label: String(t('paymentMethods')), href: '/cod' },
+        { label: String(t('shippingDelivery')), href: '/shipping' },
+        { label: String(t('faq')), href: '/faq' },
       ]
     },
     {
-      title: t('termsConditions'),
+      title: String(t('termsConditions')),
       links: [
-        { label: t('termsConditions'), href: '/terms' },
-        { label: t('returnPolicy'), href: '/returns' },
-        { label: t('privacyPolicy'), href: '/privacy' },
+        { label: String(t('termsConditions')), href: '/terms' },
+        { label: String(t('returnPolicy')), href: '/returns' },
+        { label: String(t('privacyPolicy')), href: '/privacy' },
       ]
     }
   ]
@@ -39,14 +49,14 @@ export default function Footer() {
           <div className="space-y-4">
             <Link href="/" className="block">
               <h3 className="text-2xl font-bold text-gray-800">
-                {t('storeName')}
+                {String(t('heroTitle'))}
               </h3>
               <p className="text-sm text-amber-700 font-medium">
-                {t('heroTitle')}
+                {String(t('heroTitle'))}
               </p>
             </Link>
             <p className="text-gray-600 text-sm">
-              {t('aboutDescription')}
+              {String(t('aboutDescription'))}
             </p>
           </div>
 
@@ -74,20 +84,20 @@ export default function Footer() {
           {/* Contact Info */}
           <div className="space-y-4">
             <h4 className="text-gray-800 font-semibold">
-              {t('contact')}
+              {String(t('contact'))}
             </h4>
             <ul className="space-y-2 text-sm text-gray-600">
               <li className="flex items-center gap-2">
                 <span className="text-amber-700">📍</span>
-                <span>{t('country')}</span>
+                <span>{t('contactTitle')}</span>
               </li>
               <li className="flex items-center gap-2">
                 <span className="text-amber-700">📱</span>
-                <span>{t('phone')}</span>
+                <span>{t('contactTitle')}</span>
               </li>
               <li className="flex items-center gap-2">
                 <span className="text-amber-700">✉️</span>
-                <span>{t('emailAddress')}</span>
+                <span>{t('email')}</span>
               </li>
             </ul>
           </div>
@@ -96,7 +106,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="mt-12 pt-8 border-t border-amber-100">
           <p className="text-center text-gray-600 text-sm">
-            © {new Date().getFullYear()} {t('storeName')}. {t('allRightsReserved')}
+            © {new Date().getFullYear()} {String(t('heroTitle'))}. {String(t('allRightsReserved'))}
           </p>
         </div>
       </div>

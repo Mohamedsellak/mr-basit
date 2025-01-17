@@ -1,10 +1,139 @@
 export type Language = 'en' | 'fr' | 'dar'
 
-export type TranslationValue = string | string[]
+// Separate types for string-only translations and array translations
+export type StringTranslations = {
+  // Navigation
+  home: string
+  shop: string
+  cart: string
+  about: string
+  contact: string
+  
+  // Hero Section
+  heroTitle: string
+  heroSubtitle: string
+  shopNow: string
+  
+  // About Section
+  aboutTitle: string
+  aboutDescription: string
+  
+  // Products Section
+  featuredProducts: string
+  addToCart: string
+  viewDetails: string
+  price: string
+  
+  // Cart
+  cartTitle: string
+  emptyCart: string
+  total: string
+  checkout: string
+  removeItem: string
+  clearCart: string
+  
+  // Contact
+  contactTitle: string
+  contactDescription: string
+  name: string
+  email: string
+  message: string
+  send: string
+  
+  // COD Page
+  codPageTitle: string
+  codPageDesc: string
+  deliveryProcess: string
+  shippingMethods: string
+  privateDelivery: string
+  privateDeliveryDescription: string
+  days: string
+  doorToDoor: string
+  howItWorks: string
+  orderStep: string
+  orderStepDescription: string
+  confirmStep: string
+  confirmStepDescription: string
+  payStep: string
+  payStepDescription: string
+  
+  // Footer
+  aboutStore: string
+  paymentMethods: string
+  shippingDelivery: string
+  faq: string
+  termsConditions: string
+  returnPolicy: string
+  privacyPolicy: string
+  allRightsReserved: string
 
-export type TranslationSet = {
-  [key: string]: TranslationValue
+  // Privacy Policy
+  introduction: string
+  privacyIntro: string
+  informationCollection: string
+  informationCollectionDesc: string
+  personalInfo: string
+  contactInfo: string
+  shippingInfo: string
+  paymentInfo: string
+  informationUsage: string
+  informationUsageDesc: string
+  informationProtection: string
+  informationProtectionDesc: string
+  cookies: string
+  cookiesDesc: string
+  thirdPartyServices: string
+  thirdPartyServicesDesc: string
+  privacyContact: string
+
+  // Return Policy
+  returnPolicyTitle: string
+  returnPolicyDesc: string
+  returnConditions: string
+  returnTimeLimit: string
+  returnProcess: string
+  returnContact: string
+  returnInstructions: string
+  returnRefund: string
+  returnDeduction: string
+
+  // Terms of Use
+  termsTitle: string
+  termsDesc: string
+  termsAccount: string
+  termsProducts: string
+  termsPayment: string
+  termsShipping: string
+  termsReturns: string
+  termsLiability: string
+
+  // Payment Methods
+  paymentTitle: string
+  paymentCodTitle: string
+  paymentCodDesc: string
+  bankTransfer: string
+  bankTransferDesc: string
+  paymentProcess: string
+  paymentOptions: string
+  placeOrderStep: string
+  confirmOrderStep: string
+  payOnDeliveryStep: string
+  chooseTransferStep: string
+  getBankDetailsStep: string
+  sendConfirmationStep: string
+  processOrderStep: string
 }
+
+export type ArrayTranslations = {
+  accountTerms: string[]
+  productTerms: string[]
+  paymentTerms: string[]
+  shippingTerms: string[]
+  returnTerms: string[]
+  liabilityTerms: string[]
+}
+
+export type TranslationSet = StringTranslations & ArrayTranslations
 
 export type Translations = {
   [key in Language]: TranslationSet
@@ -333,7 +462,7 @@ export const translations: Translations = {
     // Navigation
     home: 'Dar',
     shop: 'Hanout',
-    cart: 'Panier',
+    cart: 'Quffa',
     about: '3lina',
     contact: 'Twassl M3ana',
     
@@ -348,23 +477,23 @@ export const translations: Translations = {
     
     // Products Section
     featuredProducts: 'Montojat Moumayaza',
-    addToCart: 'Zid l Panier',
+    addToCart: 'Zid l Quffa',
     viewDetails: 'Chof Tafassil',
     price: 'Taman',
     
     // Cart
-    cartTitle: 'Panier Dyalk',
-    emptyCart: 'Panier dyalk khawi',
-    total: 'Majmou3',
+    cartTitle: 'Quffa Dyalk',
+    emptyCart: 'Quffa dyalk khawya',
+    total: 'Lmajmou3',
     checkout: 'Kmml Chra',
     removeItem: 'Hyyd',
-    clearCart: 'Khwi Panier',
+    clearCart: 'Khwi Quffa',
     
     // Contact
     contactTitle: 'Twassl M3ana',
     contactDescription: 'Twassl m3ana ila 3ndk chi soual',
     name: 'Smya',
-    email: 'Email',
+    email: 'Imayl',
     message: 'Rissala',
     send: 'Ssift',
     
@@ -383,7 +512,7 @@ export const translations: Translations = {
     confirmStep: 'Taakid',
     confirmStepDescription: 'Ghadi n3ayto lik bach nakkdo talab w tafassil tawssil dyalk',
     payStep: 'Khlass',
-    payStepDescription: 'Khlass cash mlli twssl talab dyalk',
+    payStepDescription: 'Khlass mlli twssl talab dyalk',
     
     // Footer
     aboutStore: '3la lHanout',
@@ -393,23 +522,23 @@ export const translations: Translations = {
     termsConditions: 'Chorot w Ahkam',
     returnPolicy: 'Siyassat Rja3',
     privacyPolicy: 'Siyassat lKhossossiya',
-    allRightsReserved: 'Jami3 lHoqoq Mahfoda.',
+    allRightsReserved: 'Jami3 lHoqoq Mahfoda',
 
     // Privacy Policy
     introduction: 'Moqaddima',
     privacyIntro: 'Had siyassa katcharh kifach kanjm3o w nst3mlo w nhafdo 3la lm3lomat dyalk chakhssiya mlli katkhdm lmawqi3 dyalna.',
     informationCollection: 'Jam3 lM3lomat',
     informationCollectionDesc: 'Kanjm3o anwa3 mokhtalifa mn lm3lomat bach nqddmo w nhssno lkhadamat dyalna:',
-    personalInfo: 'M3lomat chakhssiya (smya, email)',
-    contactInfo: 'M3lomat twassl (num tilifon, 3onwan)',
+    personalInfo: 'M3lomat chakhssiya (smya, imayl)',
+    contactInfo: 'M3lomat twassl (rqm tilifon, 3onwan)',
     shippingInfo: 'M3lomat tawssil (3onwan tawssil)',
     paymentInfo: 'M3lomat lkhlass (tariqat lkhlass)',
     informationUsage: 'Isti3mal lM3lomat',
     informationUsageDesc: 'Kanst3mlo lm3lomat dyalk bach n3aljo ttalabat w nqddmo lmossa3ada l zbouna.',
     informationProtection: 'Himayt lM3lomat',
     informationProtectionDesc: 'Kandiro ijraat amnya bach nhmiw lm3lomat dyalk chakhssiya mn ay wossol ghir msmoh bih.',
-    cookies: 'Cookies',
-    cookiesDesc: 'Kanst3mlo cookies bach nhssno tjrobat tassaffoh dyalk.',
+    cookies: 'Kookiz',
+    cookiesDesc: 'Kanst3mlo kookiz bach nhssno tjrobat tassaffoh dyalk.',
     thirdPartyServices: 'Khadamat Taraf Talit',
     thirdPartyServicesDesc: 'Momkin nst3mlo khadamat taraf talit bach n3aljo lkhlass w nwsslo lmontojat.',
     privacyContact: 'Ila 3ndk chi soual 3la siyassat lkhossossiya dyalna, afak twassl m3ana.',
@@ -420,10 +549,10 @@ export const translations: Translations = {
     returnConditions: 'Chorot Rja3',
     returnTimeLimit: 'Rja3 f 3 ayam w tbdal f 7 ayam mn tarikh chra.',
     returnProcess: 'Tariqat Rja3',
-    returnContact: 'Afak twassl m3ana 3la tariq safhat twassl wla 3la num tiliphone bach tatlob rja3 wla tbdal.',
+    returnContact: 'Afak twassl m3ana 3la tariq safhat twassl wla 3la rqm tilifon bach tatlob rja3 wla tbdal.',
     returnInstructions: 'Afak sawwr lmontoj w ssifto m3a lmdina, l3onwan w raqm talab dyalk.',
     returnRefund: 'Rja3 lflous kamlin ila kan lmontoj mokhtalif 3la dak li mchroh f lmawqi3.',
-    returnDeduction: 'Nqass 30% wla 25 derham 3la laqal ila bra lmochteri yrja3 bla 3ib.',
+    returnDeduction: 'Nqass 30% wla 25 drhm 3la laqal ila bra lmochteri yrja3 bla 3ib.',
 
     // Terms of Use
     termsTitle: 'Chorot lKhidma',
@@ -438,54 +567,54 @@ export const translations: Translations = {
     // Payment Methods
     paymentTitle: 'Toroq lKhlass',
     paymentCodTitle: 'Khlass 3nd Tawssil',
-    paymentCodDesc: 'Khlass cash mlli twssl talab dyalk.',
+    paymentCodDesc: 'Khlass mlli twssl talab dyalk.',
     bankTransfer: 'Tahwil Banki',
-    bankTransferDesc: 'Khlass 3la tariq tahwil lflous l compte dyalna.',
+    bankTransferDesc: 'Khlass 3la tariq tahwil lflous l lbank dyalna.',
     paymentProcess: 'Tariqat lKhlass',
     paymentOptions: 'Toroq lKhlass lMotaha',
     placeOrderStep: 'Dir talab 3la lmawqi3 dyalna',
     confirmOrderStep: 'Ghadi n3ayto lik bach nakkdo talab dyalk',
-    payOnDeliveryStep: 'Khlass cash mlli ywssl talab dyalk',
+    payOnDeliveryStep: 'Khlass mlli ywssl talab dyalk',
     chooseTransferStep: 'Dir talab w khtar tahwil banki',
     getBankDetailsStep: 'Ghadi n3tiwk m3lomat lbank dyalna',
     sendConfirmationStep: 'Ssift lina taakid tahwil',
     processOrderStep: 'Ghadi n3aljo talab dyalk mn b3d ma nakkdo lkhlass',
 
     accountTerms: [
-      'خاصك تكون عندك على الأقل 18 عام باش تصاوب كونط',
-      'نتا مسؤول على الحفاظ على أمان الكونط ديالك',
-      'خاصك تعطي معلومات صحيحة وكاملة',
-      'خاصك تعلمنا إلى كان شي واحد خدم الكونط ديالك بلا إذن'
+      'Khassek tkoun 3ndek 3la l2a9al 18 3am bach tsaweb hissab',
+      'Nta msoul 3la lhifad 3la aman lhissab dyalek',
+      'Khassek t3ti m3loumat shihha w kamla',
+      'Khassek t3lemna ila kan chi wahed khdem lhissab dyalek bla idn'
     ],
     productTerms: [
-      'گاع الصور ديال المنتوجات هي غير للتوضيح',
-      'ألوان المنتوجات يمكن تكون مختلفة شوية على الصور',
-      'عندنا الحق نبدلو مواصفات المنتوج بلا إشعار',
-      'توفر المنتوجات قابل للتغيير'
+      'Ga3 swaer dlmontojat hiya ghir lltwdih',
+      'Alwan lmontojat ymken tkoun mkhtalfa chwiya 3la swaer',
+      '3ndna lha9 nbedlo mwasafat lmontoj bla ich3ar',
+      'Tofor lmontojat 9abel llteghyir'
     ],
     paymentTerms: [
-      'گاع الأثمنة بالدرهم المغربي',
-      'الخلاص خاصو يكون عند التوصيل بالنسبة للدفع عند الاستلام',
-      'التحويل البنكي خاصو يتم في ظرف 24 ساعة',
-      'ما كنخزنو حتى معلومة ديال البطاقة البنكية'
+      'Ga3 latmina bderham lmeghribi',
+      'Lkhlass khasso ykoun 3nd twssil bnnisba ddef3 3nd listilam',
+      'Ttahwil lbanki khasso ytm f derf 24 sa3a',
+      'Makankhezno hta m3loma dlbita9a lbankiya'
     ],
     shippingTerms: [
-      'وقت التوصيل تقريبي وماشي مضمون',
-      'ثمن الشحن كيتحسب على حساب بلاصة التوصيل',
-      'ما مسؤولينش على التأخير اللي كيسببو الجمارك ولا شركات النقل',
-      'يمكن تزاد مصاريف إضافية للمناطق البعيدة'
+      'We9t twssil t9ribi w machi medmoun',
+      'Taman chhen kaythsseb 3la hssab blassa twssil',
+      'Mamsoulinch 3la ta2khir li kaysebbo jjmarik wla charikat na9l',
+      'Ymken tzad mssarif idafiya llmana6i9 lb3ida'
     ],
     returnTerms: [
-      'خاص الإرجاع يتطلب في ظرف 3 أيام من التوصيل',
-      'خاص المنتوج يكون في حالتو الأصلية وتغليفو الأصلي',
-      'مصاريف الإرجاع على حساب الزبون',
-      'رد الفلوس غادي يتم في ظرف 7 أيام ديال العمل'
+      'Khass rja3 yetleb f derf 3 ayam mn twssil',
+      'Khass lmontoj ykoun f halto lassliya w teglifo lassli',
+      'Mssarif rja3 3la hssab zzboun',
+      'Red lflous ghadi ytm f derf 7 ayam dl3amal'
     ],
     liabilityTerms: [
-      'ما مسؤولينش على الأضرار غير المباشرة',
-      'المسؤولية ديالنا محدودة في ثمن الشراء ديال المنتوج',
-      'ما كنضمنوش دقة وصف المنتوجات',
-      'عندنا الحق نبدلو هاد الشروط في أي وقت'
+      'Mamssoulinch 3la ladrar ghir lmoubachira',
+      'Lmassouliya dyalna mhdouda f taman chra dlmontoj',
+      'Makandemnoch di99at wassf lmontojat',
+      '3ndna lha9 nbedlo had chorot f ay we9t'
     ]
   }
 }

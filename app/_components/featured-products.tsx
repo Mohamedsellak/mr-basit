@@ -10,6 +10,7 @@ interface Product {
   price: number
   image: string
   category: string
+  quantity?: number
 }
 
 const products: Product[] = [
@@ -67,13 +68,13 @@ const FeaturedProducts = () => {
     let cart = existingCart ? JSON.parse(existingCart) : []
 
     // Check if product already exists in cart
-    const existingItem = cart.find((item: any) => item.id === product.id)
+    const existingItem = cart.find((item: Product) => item.id === product.id)
 
     if (existingItem) {
       // If exists, increment quantity
-      cart = cart.map((item: any) => 
+      cart = cart.map((item: Product) => 
         item.id === product.id 
-          ? { ...item, quantity: item.quantity + 1 }
+          ? { ...item, quantity: (item.quantity || 1) + 1 }
           : item
       )
     } else {

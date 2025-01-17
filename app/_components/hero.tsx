@@ -33,7 +33,7 @@ const Hero = () => {
                 {t('heroTitle')}
               </span>
               <div className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
-                <span className="text-gray-800 inline-block animate-slide-in-right [animation-delay:200ms]">Mr. Basit's</span> 
+                <span className="text-gray-800 inline-block animate-slide-in-right [animation-delay:200ms]">Mr. Basit&apos;s</span> 
                 <span className="block mt-2 bg-gradient-to-r from-amber-600 via-amber-700 to-amber-800 
                   text-transparent bg-clip-text animate-gradient animate-slide-in-right [animation-delay:400ms]">
                   {t('heroTitle')}
@@ -118,5 +118,5 @@ const Hero = () => {
     </section>
   )
 }
-
 export default Hero
+

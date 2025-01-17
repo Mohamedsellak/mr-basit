@@ -138,14 +138,14 @@ const ContactSection = () => {
                       text-gray-800 placeholder-gray-400
                       focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-transparent 
                       hover:border-amber-200 transition-all duration-200"
-                    placeholder={t('name')}
+                    placeholder={String(t('name'))}
                     required
                   />
                 </div>
                 <div className="space-y-2">
                   <label 
                     htmlFor="email" 
-                    className="block text-sm font-medium text-gray-600"
+                    className="block text-sm font-medium text-gray-700"
                   >
                     {t('email')}
                   </label>
@@ -156,7 +156,7 @@ const ContactSection = () => {
                       text-gray-800 placeholder-gray-400
                       focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-transparent 
                       hover:border-amber-200 transition-all duration-200"
-                    placeholder={t('email')}
+                    placeholder={String(t('email'))}
                     required
                   />
                 </div>
@@ -164,7 +164,7 @@ const ContactSection = () => {
               <div className="space-y-2">
                 <label 
                   htmlFor="message" 
-                  className="block text-sm font-medium text-gray-600"
+                  className="block text-sm font-medium text-gray-700"
                 >
                   {t('message')}
                 </label>
@@ -175,7 +175,7 @@ const ContactSection = () => {
                     text-gray-800 placeholder-gray-400 resize-none
                     focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-transparent 
                     hover:border-amber-200 transition-all duration-200"
-                  placeholder={t('message')}
+                  placeholder={String(t('message'))}
                   required
                 />
               </div>
