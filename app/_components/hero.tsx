@@ -10,16 +10,16 @@ const Hero = () => {
   const { t } = useLanguage()
   
   return (
-    <section id="home" className="relative overflow-hidden bg-gradient-to-b from-amber-50 to-white min-h-[85vh] flex items-center">
+    <section id="home" className="relative overflow-hidden bg-gradient-to-b from-amber-50 to-white min-h-[100vh] flex items-center">
       {/* Animated Background Elements */}
-      <div className="absolute inset-0">
+      {/* <div className="absolute inset-0">
         <div className="absolute inset-0 opacity-[0.05]">
           <div className="h-full w-full bg-[url('/moroccan-pattern-dark.png')] bg-repeat bg-[length:24px_24px]"></div>
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-amber-100/20 to-transparent"></div>
+        </div>
+        */}
         <Bubbles />
-      </div>
-      
       {/* Main Hero Content */}
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-center max-w-6xl mx-auto">
@@ -91,6 +91,7 @@ const Hero = () => {
               border-2 border-amber-100/50">
               <Image
                 src="/8.webp"
+                // src="/images/1.png"
                 alt="Moroccan Crafts"
                 fill
                 className="object-cover scale-105 hover:scale-110 transition-transform duration-700"

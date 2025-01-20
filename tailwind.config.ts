@@ -89,6 +89,10 @@ const config: Config = {
             opacity: '1',
           },
         },
+        scroll: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-100%)' },
+        }
       },
       animation: {
         gradient: 'gradient 15s ease infinite',
@@ -97,6 +101,7 @@ const config: Config = {
         'scale-pulse': 'scale-pulse 3s ease-in-out infinite',
         'glow': 'glow 4s ease-in-out infinite',
         'slide-in-right': 'slide-in-right 0.8s ease-out forwards',
+        'scroll': 'scroll 40s linear infinite',
       },
     },
   },
