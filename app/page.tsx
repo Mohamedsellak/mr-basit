@@ -3,7 +3,6 @@ import FeaturedProducts from '@/app/_components/featured-products'
 import AboutSection from '@/app/_components/about'
 import ContactSection from '@/app/_components/contact'
 import BgImages from '@/app/_components/bg-images'
-import ScrollingBanner from '@/app/_components/scrolling-banner'
 import Navbar from './_components/navbar'
 import Footer from './_components/footer'
 
@@ -12,8 +11,6 @@ export default function HomePage() {
     <main className="overflow-hidden">
       {/* Navbar */}
       <Navbar />
-      {/* Scrolling Banner */}
-      <ScrollingBanner />
 
       {/* Decorative background images */}
       <BgImages />
