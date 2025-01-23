@@ -94,7 +94,7 @@ export default function Ads() {
   if (!mounted) return null
 
   return (
-    <div className="fixed top-0 right-0 w-[300px] h-[400px] z-[50] animate-fade-in">
+    <div className="fixed top-0 right-0 z-[50] animate-fade-in">
       {ads.map((ad, index) => (
         <FloatingAd
           key={ad.id}
