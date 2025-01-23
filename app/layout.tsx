@@ -1,13 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/app/_components/navbar";
-import Footer from "@/app/_components/footer";
+
 import Ads from './_components/ads'
 import { LanguageProvider } from './i18n/LanguageContext'
 import LanguageSelector from './_components/language-selector'
-import ScrollingBanner from './_components/scrolling-banner'
-
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -26,11 +23,8 @@ export default function RootLayout({
         <LanguageProvider>
           <div className="flex flex-col min-h-screen">
             <div className="flex-grow">
-              <ScrollingBanner />
               {children}
             </div>
-            <Navbar />
-            <Footer />
           </div>
           <Ads />
           <LanguageSelector />

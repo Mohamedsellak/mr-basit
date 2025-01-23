@@ -97,30 +97,31 @@ const FeaturedProducts = () => {
   }
   
   return (
-    <section id="products" className="relative py-20 bg-gradient-to-b from-white to-amber-50">
-      {/* Moroccan Pattern Background */}
-      <div className="absolute inset-0 opacity-[0.03]">
+    <section id="products" className="relative py-20 bg-gradient-to-b from-white/30 to-amber-50/30">
+      {/* Remove Moroccan Pattern Background since we have our own background */}
+      {/* <div className="absolute inset-0 opacity-[0.03]">
         <div className="h-full w-full bg-[url('/moroccan-pattern-dark.png')] bg-repeat bg-[length:40px_40px]"></div>
-      </div>
+      </div> */}
 
       <div className="container mx-auto px-4">
-        {/* Section Header */}
+        {/* Section Header - adjusted for transparency */}
         <div className="text-center mb-16">
-          <h2 className="text-amber-700 text-lg font-medium tracking-[0.2em] uppercase mb-4">
+          <h2 className="text-amber-800 text-lg font-medium tracking-[0.2em] uppercase mb-4">
             {t('shop')}
           </h2>
-          <h3 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+          <h3 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             {t('featuredProducts')}
           </h3>
-          <div className="w-24 h-1 bg-gradient-to-r from-amber-600 to-amber-700 mx-auto"></div>
+          <div className="w-24 h-1 bg-amber-700/70 mx-auto"></div>
         </div>
 
-        {/* Products Grid */}
+        {/* Products Grid - adjusted card styling */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {products.map((product) => (
             <div key={product.id}>
-              <div className="bg-white backdrop-blur-sm rounded-2xl border border-amber-100 
-                overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <div className="bg-white/70 backdrop-blur-sm rounded-2xl border border-amber-100/50 
+                overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300
+                hover:bg-white/80">
                 {/* Product Image */}
                 <div className="relative aspect-square">
                   <Image
@@ -132,27 +133,27 @@ const FeaturedProducts = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
                 </div>
 
-                {/* Product Info */}
+                {/* Product Info - adjusted colors for better visibility */}
                 <div className="p-6 space-y-4">
                   <div className="space-y-2">
-                    <p className="text-amber-700 text-sm tracking-wider uppercase font-medium">
+                    <p className="text-amber-800 text-sm tracking-wider uppercase font-medium">
                       {product.category}
                     </p>
-                    <h4 className="text-xl text-gray-800 font-semibold line-clamp-2">
+                    <h4 className="text-xl text-gray-900 font-semibold line-clamp-2">
                       {product.name}
                     </h4>
                   </div>
 
                   <div className="flex items-center justify-between">
-                    <p className="text-2xl text-gray-700 font-medium">
+                    <p className="text-2xl text-gray-800 font-medium">
                       {product.price.toLocaleString()} <span className="text-sm">MAD</span>
                     </p>
                     <button 
-                      className={`px-6 py-2 bg-gradient-to-r text-white rounded-full font-medium text-sm
-                        transition-all duration-300 relative
+                      className={`px-6 py-2 text-white rounded-full font-medium text-sm
+                        transition-all duration-300 relative backdrop-blur-sm
                         ${addedItems[product.id]
-                          ? 'from-green-600 to-green-700 hover:from-green-500 hover:to-green-600'
-                          : 'from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-600'
+                          ? 'bg-green-600/90 hover:bg-green-700/90'
+                          : 'bg-amber-600/90 hover:bg-amber-700/90'
                         }`}
                       onClick={() => addToCart(product)}
                     >
@@ -174,12 +175,15 @@ const FeaturedProducts = () => {
           ))}
         </div>
 
-        {/* View All Button */}
+        {/* View All Button - adjusted styling */}
         <div className="text-center">
           <Link
             href="/products"
-            className="inline-flex items-center gap-2 px-8 py-3 border border-amber-600 
-              text-amber-700 rounded-full hover:bg-amber-50 transition-colors duration-300"
+            className="inline-flex items-center gap-2 px-8 py-3 
+              bg-white/50 backdrop-blur-sm
+              border border-amber-600/50 
+              text-amber-800 rounded-full 
+              hover:bg-white/70 transition-all duration-300"
           >
             {t('viewDetails')}
             <svg 

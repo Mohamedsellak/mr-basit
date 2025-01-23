@@ -10,16 +10,9 @@ const Hero = () => {
   const { t } = useLanguage()
   
   return (
-    <section id="home" className="relative overflow-hidden bg-gradient-to-b from-amber-50 to-white min-h-[100vh] flex items-center">
-      {/* Animated Background Elements */}
-      {/* <div className="absolute inset-0">
-        <div className="absolute inset-0 opacity-[0.05]">
-          <div className="h-full w-full bg-[url('/moroccan-pattern-dark.png')] bg-repeat bg-[length:24px_24px]"></div>
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-amber-100/20 to-transparent"></div>
-        </div>
-        */}
+    <section id="home" className="relative overflow-hidden bg-gradient-to-b from-amber-50/30 to-white/30 min-h-[100vh] flex items-center">
         <Bubbles />
+        
       {/* Main Hero Content */}
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-center max-w-6xl mx-auto">
@@ -99,15 +92,6 @@ const Hero = () => {
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
               />
             </div>
-            {/* Decorative Elements */}
-            <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-amber-100/40 rounded-tr-[6rem] 
-              blur-2xl animate-glow shadow-[inset_-15px_0_20px_rgba(251,146,60,0.2)]"></div>
-            <div className="absolute -top-6 -right-6 w-32 h-32 bg-amber-200/40 rounded-bl-[6rem] 
-              blur-2xl animate-glow [animation-delay:2s] shadow-[inset_15px_0_20px_rgba(251,146,60,0.2)]"></div>
-            <div className="absolute top-1/2 -translate-y-1/2 -left-3 w-24 h-24 bg-amber-300/30 rounded-tr-[4rem] 
-              blur-2xl animate-glow [animation-delay:1s] shadow-[inset_-10px_0_15px_rgba(251,146,60,0.2)]"></div>
-            <div className="absolute top-1/2 -translate-y-1/2 -right-3 w-24 h-24 bg-amber-400/30 rounded-bl-[4rem] 
-              blur-2xl animate-glow [animation-delay:3s] shadow-[inset_10px_0_15px_rgba(251,146,60,0.2)]"></div>
           </div>
         </div>
 
